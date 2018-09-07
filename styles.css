@@ -96,7 +96,7 @@ form {
    font-size: 1em;
 }
 
-#csset {
+#zipset, #csset {
    visibility: hidden;
 }
 
@@ -120,6 +120,8 @@ label {
 #zipset label, #csset label {
    clear: left;
 }
+
+
 
 #city {
    width: 12em;

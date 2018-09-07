@@ -13,6 +13,7 @@
 var httpRequest = false;
 var countrySel;
 
+// function to get the requested object and instantiate the XML request.
 function getRequestObject() {
     try {
         httpRequest = new XMLHttpRequest();
@@ -36,6 +37,7 @@ function getRequestObject() {
     return httpRequest;
 }
 
+// Function to check the input and make sure it isnt empty and valid.
 function checkInput() {
     var zip = document.getElementById("zip").value;
     if (zip.length === 5) {
@@ -46,6 +48,7 @@ function checkInput() {
     }
 }
 
+// function to check the buttons to make sure that one is selected. 
 function checkButtons() {
     var germany = document.getElementById("germany");
     var us = document.getElementById("us");
@@ -60,7 +63,7 @@ function checkButtons() {
     }
 }
 
-
+// function to get the location and to populate the data with the api.
 function getLocation() {
     var zip = document.getElementById("zip").value;
     if (!httpRequest) {
@@ -72,6 +75,7 @@ function getLocation() {
     httpRequest.onreadystatechange = displayData;
 }
 
+// function that grabs the response from the json and populates it onto the webpage.
 function displayData() {
     if (httpRequest.readyState === 4 && httpRequest.status === 200) {
         var resultData = JSON.parse(httpRequest.responseText);
@@ -85,6 +89,7 @@ function displayData() {
 
 }
 
+// Event listener to listen for the click of the radio button.
 var germany = document.getElementById("germany");
 var us = document.getElementById("us");
 if (us.addEventListener) {
@@ -96,6 +101,7 @@ germany.attachEvent("onclick", checkButtons);
 us.attachEvent("onclick", checkButtons)
 }
 
+// Event listener that listens for the keyup event from a user.
 var zip = document.getElementById("zip");
 if (zip.addEventListener) {
     zip.addEventListener("keyup", checkInput, false);
